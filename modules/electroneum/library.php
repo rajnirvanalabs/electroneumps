@@ -116,8 +116,8 @@ class Electroneum_Library
             throw new RuntimeException('Could\'t initialize a cURL session');
         }
         curl_setopt($ch, CURLOPT_URL, $this->url);
-	      curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
-	      curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
+	      //curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_DIGEST);
+	      //curl_setopt($ch, CURLOPT_USERPWD, $this->username . ":" . $this->password);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $pRequest);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));

@@ -19,13 +19,13 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
 		$amount = $this->changeto($total, $c);
 		$actual = $this->retriveprice($c);
 		$payment_id  = $this->set_paymentid_cookie();
+    $address = Configuration::get('ELECTRONEUM_ADDRESS');
 		$uri = "electroneum:$address?tx_amount=$amount?tx_payment_id=$payment_id";
 		$status = "Awaiting Confirmation...";
 
-		$address = Configuration::get('ELECTRONEUM_ADDRESS');
 		$daemon_address = Configuration::get('ELECTRONEUM_WALLET');
 
-		$this->electroneum_daemon = new Electroneum_Library('http://'. $daemon_address .'/json_rpc'); // example $daemon address 127.0.0.1:18081
+		$this->electroneum_daemon = new Electroneum_Library($daemon_address .'/json_rpc','demo','demo'); // example $daemon address 127.0.0.1:18081,username, password
 
 		$integrated_address_method = $this->electroneum_daemon->make_integrated_address($payment_id);
 		$integrated_address = $integrated_address_method["integrated_address"];
