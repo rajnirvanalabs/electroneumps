@@ -30,6 +30,8 @@ You can refer the official documentation for running full node from [here](https
 ### Option 2: Connecting to a remote node
 The easiest way to find a remote node to connect to is to visit [ElectroneumPool](https://github.com/electroneum/electroneum-pool#pools-using-this-software) and use one of the nodes offered which supports json_rpc. `Eg. https://etn.mymininghub.com/json_rpc port 445`
 
+`Note: You must run your JSON RPC on the host server of Prestashop against your wallet`
+
 ### Setup your  electroneum wallet-rpc
 
 * Setup a electroneum wallet using the electroneum-wallet-cli tool. If you do not know how to do this you can learn about it at [https://github.com/electroneum/electroneum-pool](https://github.com/electroneum/electroneum-pool#1-downloading--installing)
