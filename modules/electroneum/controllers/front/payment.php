@@ -1,4 +1,9 @@
 <?php
+/*
+*  Modified March 2018 by NirvanaLabs.co to allow WooCommerce to accept Electroneum.com (ETN) Cryptocurrency
+*  Author URI: http://nirvanalabs.co
+*/
+
 include(dirname(__FILE__). '/../../library.php');
 class electroneumpaymentModuleFrontController extends ModuleFrontController
 {

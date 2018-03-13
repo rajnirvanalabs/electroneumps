@@ -1,9 +1,12 @@
 <?php
 /**
- *      Electroneum Payment Integration with Prestashop
- *      Developed by NirvanaLabs
+ *      Monero Payment Integration with Prestashop
+ *      Developed by SerHack
  *	    Supported Version : 1.5.x , 1.6.x
- *      rajesh@nirvanalabs.co
+ *      support@monerointegrations.com
+ *
+ *      Modified March 2018 by NirvanaLabs.co to allow WooCommerce to accept Electroneum.com (ETN) Cryptocurrency
+ *      Author URI: http://nirvanalabs.co
  */
 
 
