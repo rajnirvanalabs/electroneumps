@@ -98,6 +98,7 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
 	{
 		$etn_live_price = $this->retriveprice($currency);
 		$new_amount     = $amount / $etn_live_price;
+    $new_amount = $new_amount + 0.2; // Transaction Fee
 		$rounded_amount = round($new_amount, 2); //the electroneum wallet can't handle decimals smaller than 0.01
 		return $rounded_amount;
 	}
