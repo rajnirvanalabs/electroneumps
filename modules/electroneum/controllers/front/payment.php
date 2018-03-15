@@ -22,7 +22,6 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
       	$c = $currency->iso_code;
 		$total = $cart->getOrderTotal();
 		$amount = $this->changeto($total, $c);
-    $amount = $amount + 0.2; // Transaction Fee
 		$actual = $this->retriveprice($c);
 		$payment_id  = $this->set_paymentid_cookie(32);
     $payment_id_rpc = $this->set_paymentid_cookie(8);
