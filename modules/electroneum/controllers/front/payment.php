@@ -22,17 +22,19 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
       	$c = $currency->iso_code;
 		$total = $cart->getOrderTotal();
 		$amount = $this->changeto($total, $c);
+    $amount = $amount + 0.2; // Transaction Fee
 		$actual = $this->retriveprice($c);
-		$payment_id  = $this->set_paymentid_cookie();
+		$payment_id  = $this->set_paymentid_cookie(32);
+    $payment_id_rpc = $this->set_paymentid_cookie(8);
     $address = Configuration::get('ELECTRONEUM_ADDRESS');
-		$uri = "electroneum:$address?tx_amount=$amount?tx_payment_id=$payment_id";
+		$uri = "electroneum:$address?tx_payment_id=$payment_id?tx_amount=$amount";
 		$status = "Awaiting Confirmation...";
 
 		$daemon_address = Configuration::get('ELECTRONEUM_WALLET');
 
 		$this->electroneum_daemon = new Electroneum_Library($daemon_address .'/json_rpc','demo','demo'); // example $daemon address 127.0.0.1:18081,username, password
 
-		$integrated_address_method = $this->electroneum_daemon->make_integrated_address($payment_id);
+		$integrated_address_method = $this->electroneum_daemon->make_integrated_address($payment_id_rpc);
 		$integrated_address = $integrated_address_method["integrated_address"];
 
 		if($this->verify_payment($payment_id, $amount))
@@ -57,11 +59,11 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
     }
 
 
-	private function set_paymentid_cookie()
+	private function set_paymentid_cookie($size)
 				{
 					if(!isset($_COOKIE['payment_id']))
 					{
-						$payment_id  = bin2hex(openssl_random_pseudo_bytes(8));
+						$payment_id  = bin2hex(openssl_random_pseudo_bytes($size));
 						setcookie('payment_id', $payment_id, time()+2700);
 					}
 					else
@@ -98,7 +100,7 @@ class electroneumpaymentModuleFrontController extends ModuleFrontController
 	{
 		$etn_live_price = $this->retriveprice($currency);
 		$new_amount     = $amount / $etn_live_price;
-    $new_amount = $new_amount + 0.2; // Transaction Fee
+    //$new_amount = $new_amount + 0.2; // Transaction Fee
 		$rounded_amount = round($new_amount, 2); //the electroneum wallet can't handle decimals smaller than 0.01
 		return $rounded_amount;
 	}
