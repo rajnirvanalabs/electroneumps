@@ -35,6 +35,10 @@
 					                           <div class='col-sm-9 col-md-9 col-lg-9' style='padding:10px;'>
 												   <p>Send {$amount} <b>ETN</b> to the following address:</p>
 						                           <b></b><input type='text'  class='form-control' value='{$integrated_address}'>
+                            <p>Use the following <b>Payment ID</b> for the transaction:</p>
+                                                   <b></b><input type='text'  class='form-control' value='{$address}'>
+                                                <br></br>
+                                                <b></b><input type='text'  class='form-control' value='{$payment_id}'>
                                                 <br></br>
                                                 <small>If you don't know how to use Electroneum, <a href='#'>learn more here</a>. </small>
 					                           </div>
